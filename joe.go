@@ -76,7 +76,7 @@ func generate(args string) {
 		if filepath, ok := gitignores[strings.ToLower(name)]; ok {
 			bytes, err := ioutil.ReadFile(filepath)
 			if err == nil {
-				output += "\n#### " + name + " ####\n"
+				output += "#### " + name + " ####\n"
 				output += string(bytes)
 				if index < len(names)-1 {
 					output += "\n"
@@ -92,9 +92,6 @@ func generate(args string) {
 		fmt.Printf("Unsupported files: %s\n", strings.Join(notFound, ", "))
 		fmt.Println("Run `joe ls` to see list of available gitignores.")
 		output = ""
-	}
-	if len(output) > 0 {
-		output = "#### joe made this: http://goel.io/joe\n" + output
 	}
 	fmt.Print(output)
 }
